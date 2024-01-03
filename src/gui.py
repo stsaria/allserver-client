@@ -57,6 +57,3 @@ def gui_start():
         return
     except:
         sg.PopupError(lang["Word"][7]+" : \n"+traceback.format_exc())
-
-if __name__ == "__main__":
-    gui_start()
