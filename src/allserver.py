@@ -1,4 +1,5 @@
-import sys, os
+import etc, sys, os
+import PySimpleGUI as sg
 
 if "src" in os.path.abspath(os.path.dirname(os.path.abspath(sys.argv[0]))).replace("\\", "/").split("/") and os.getcwd().replace("\\", "/").split("/")[-1] == "src":
     os.chdir('../')
@@ -13,7 +14,10 @@ def main(args : list):
     result = check.check()
     if result != 0:
         return 1
+    lang = etc.load_lang()
     if len(args) >= 2:
+        if "--help" in args:
+            sg.popup("\n".join(lang["Help"]))
         if "--build" in args:
             build.install()
     else:

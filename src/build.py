@@ -8,7 +8,7 @@ if user_use_platform == "Windows":
 elif user_use_platform == "Linux":
     os_name = "linux"
 
-make_list = ["lang?dir", "config?dir", "README.md?file", "README.html?file", "figure.drawio.png?file"]
+make_list = ["lang?dir", "config?dir", "README.md?file", "README.html?file", "figure.drawio.png?file", "detailed-manual"]
 
 def copy_need_file():
     for i in make_list: 

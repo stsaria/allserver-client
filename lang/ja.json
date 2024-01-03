@@ -3,6 +3,9 @@
         "AuthorName": "stsaria",
         "Explanation": "日本語の言語ファイル"
         },
+    "Help":
+        ["Help\n",
+        "--build : ビルド(PyInstallerが必要)"],
     "Text" : 
         ["リストサーバーIP : ",
         "マインクラフトサーバーIP : ",

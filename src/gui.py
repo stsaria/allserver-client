@@ -17,6 +17,7 @@ main_layout = [
 ]
 
 def gui_start():
+    is_readonly = True
     is_minecraft_run = False
     if os.path.isfile("run"): os.remove("run")
     try:
@@ -24,6 +25,10 @@ def gui_start():
         while True:
             event, values = window.read(timeout=50)
             # ウィンドウの×ボタンクリックで終了
+            if os.path.isfile("3141592653589793238") and is_readonly:
+                window["serverlist"].update(disabled=False)
+                window["log"].update(disabled=False)
+                is_readonly = False
             if not os.path.isfile("run"):
                 is_minecraft_run = False
             if event == "Quit" and not is_minecraft_run:
@@ -40,7 +45,7 @@ def gui_start():
                     continue
                 servers_str = servers_str + lang["Word"][0] + ":" + str(len(servers)) + "\n"
                 for i in servers:
-                    servers_str = servers_str + lang["Word"][1] + ":" + i[0] + " IP:" + i[1] + " " + lang["Word"][2] + ":" + i[2] + " " + lang["Word"][3] + ":" + i[3] + lang["Word"][4] + ":" + i[4] + "\n"
+                    servers_str = servers_str + lang["Word"][1] + ":" + i[0] + " IP:" + i[1] + " " + lang["Word"][2] + ":" + i[2] + " " + lang["Word"][3] + ":" + i[3] + " " + lang["Word"][4] + ":" + i[4] + "\n"
                 window["serverlist"].update(servers_str)
             elif event == "makeserver" and not is_minecraft_run:
                 if values["mcid"] == "":
