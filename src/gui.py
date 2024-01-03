@@ -1,4 +1,4 @@
-import threading, traceback, client, etc, os
+import configparser, webbrowser, threading, traceback, client, etc, os
 import PySimpleGUI as sg
 
 lang = etc.load_lang()
@@ -13,7 +13,7 @@ main_layout = [
     [sg.Text(lang["Text"][4]), sg.Input(key="mcid")],
     [sg.Text(lang["Text"][5]), sg.Input(key="motd")],
     [sg.Text(lang["Text"][1]), sg.Input(key="minecraftserverip"), sg.Button(lang["Button"][1],key="makeserver")],
-    [sg.Button(lang["Button"][2], key="Quit")]
+    [sg.Button(lang["Button"][3], key="Help"), sg.Button(lang["Button"][2], key="Quit")]
 ]
 
 def gui_start():
@@ -53,6 +53,11 @@ def gui_start():
                 thread = threading.Thread(target=client.start_server, args=(values["minecraftserverip"], values["motd"], values["mcid"], window))
                 thread.start()
                 is_minecraft_run = True
+            elif event == "Help":
+                ini = configparser.ConfigParser()
+                ini.read('config/basic.ini', 'UTF-8')
+                lang_name = ini["lang"]["lang"]
+                webbrowser.open(f"./detailed-manual/manual-{lang_name}.html")
     except KeyboardInterrupt:
         return
     except:
