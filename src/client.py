@@ -42,7 +42,7 @@ def start_server(ip : str, motd : str, mcid : str, window, port = 50385):
     lang = etc.load_lang()
     result = 0
     try:
-        open("run", mode="w")
+        open("nostop", mode="w")
         client_socket.connect((ip, port))
         client_socket.sendall(f"{motd},{mcid}".encode('utf-8'))
         data = client_socket.recv(1024)
@@ -78,6 +78,6 @@ def start_server(ip : str, motd : str, mcid : str, window, port = 50385):
     finally:
         if not is_socket_closed(client_socket):
             client_socket.close()
-        if os.path.isfile("run"):
-            os.remove("run")
+        if os.path.isfile("nostop"):
+            os.remove("nostop")
     return result

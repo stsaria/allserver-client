@@ -19,7 +19,7 @@ main_layout = [
 def gui_start():
     is_readonly = True
     is_minecraft_run = False
-    if os.path.isfile("run"): os.remove("run")
+    if os.path.isfile("nostop"): os.remove("nostop")
     try:
         window = sg.Window("AllServer -Client-", main_layout, disable_close=True)
         while True:
@@ -29,12 +29,12 @@ def gui_start():
                 window["serverlist"].update(disabled=False)
                 window["log"].update(disabled=False)
                 is_readonly = False
-            if not os.path.isfile("run"):
+            if not os.path.isfile("nostop"):
                 is_minecraft_run = False
             if event == "Quit" and not is_minecraft_run:
                 break
             elif event == "Quit" and is_minecraft_run:
-                sg.Popup(lang["ErrorMessage"][3], "Cant Quit")
+                sg.Popup(lang["ErrorMessage"][3], title="Cant Quit")
             elif event == "searchserver":
                 servers_str = ""
                 result, servers = client.search_servers(values["listserverip"])

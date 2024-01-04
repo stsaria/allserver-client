@@ -15,4 +15,5 @@ Deprecated, but if you want to use the CUI version of the client [here](https://
 ```
 or click on the binary file in the window to launch it
 # Argument
+- `--help` Help. e.g:`./allserver --help`
 - `--build` Build Python files. e.g:`./allserver --build`
