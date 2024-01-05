@@ -168,3 +168,6 @@ minecraft/
 # Build
 *.zip
 *.tar.gz
+
+# Vscode
+.vscode/
