@@ -5,14 +5,16 @@ lang = etc.load_lang()
 
 main_layout = [
     [sg.Text("AllServer GUI Client", font=("", 20))],
-    [sg.Text(lang["Text"][2], font=("", 12))],
-    [sg.Multiline(key="serverlist", size=(90, 15), disabled=True)],
-    [sg.Text(lang["Text"][3], font=("", 12))],
-    [sg.Multiline(key="log", size=(90, 5), disabled=True)],
+    [sg.Text(lang["Text"][7], font=("", 14))],
     [sg.Text(lang["Text"][0]), sg.Input(key="listserverip"), sg.Button(lang["Button"][0],key="searchserver")],
+    [sg.Text(lang["Text"][6], font=("", 14))],
     [sg.Text(lang["Text"][4]), sg.Input(key="mcid")],
     [sg.Text(lang["Text"][5]), sg.Input(key="motd")],
     [sg.Text(lang["Text"][1]), sg.Input(key="minecraftserverip"), sg.Button(lang["Button"][1],key="makeserver")],
+    [sg.Text(lang["Text"][2], font=("", 14))],
+    [sg.Multiline(key="serverlist", size=(90, 15), disabled=True)],
+    [sg.Text(lang["Text"][3], font=("", 14))],
+    [sg.Multiline(key="log", size=(90, 5), disabled=True)],
     [sg.Button(lang["Button"][3], key="Help"), sg.Button(lang["Button"][2], key="Quit")]
 ]
 
