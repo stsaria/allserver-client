@@ -24,4 +24,4 @@ def main(args : list):
         gui.gui_start()
 
 if __name__ == "__main__":
-    main(sys.argv)
+    sys.exit(main(sys.argv))

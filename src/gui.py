@@ -21,6 +21,7 @@ def gui_start():
     is_minecraft_run = False
     if os.path.isfile("nostop"): os.remove("nostop")
     try:
+        word = lang["Word"]
         window = sg.Window("AllServer -Client-", main_layout, disable_close=True)
         while True:
             event, values = window.read(timeout=50)
@@ -41,11 +42,11 @@ def gui_start():
                 if result == 0:
                     window["log"].print(lang["Message"][0])
                 else:
-                    window["log"].print(lang["Word"][7]+" : "+lang["ErrorMessage"][0])
+                    window["log"].print(word[7]+" : "+lang["ErrorMessage"][0])
                     continue
-                servers_str = servers_str + lang["Word"][0] + ":" + str(len(servers)) + "\n"
+                servers_str = servers_str + word[0] + ":" + str(len(servers)) + "\n"
                 for i in servers:
-                    servers_str = servers_str + lang["Word"][1] + ":" + i[0] + " IP:" + i[1] + " " + lang["Word"][2] + ":" + i[2] + " " + lang["Word"][3] + ":" + i[3] + " " + lang["Word"][4] + ":" + i[4] + "\n"
+                    servers_str = servers_str + word[1] + ":" + i[0] + " IP:" + i[1] + " " + word[2] + ":" + i[2] + " " + word[3] + ":" + i[3] + " " + word[4] + ":" + i[4] + "\n"
                 window["serverlist"].update(servers_str)
             elif event == "makeserver" and not is_minecraft_run:
                 if values["mcid"] == "":

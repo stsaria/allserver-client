@@ -171,3 +171,6 @@ minecraft/
 
 # Vscode
 .vscode/
+
+# Debug
+debug.*
