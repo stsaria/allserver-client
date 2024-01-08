@@ -43,6 +43,7 @@ def start_server(ip : str, motd : str, mcid : str, window, port = 50385):
     result = 0
     try:
         open("nostop", mode="w")
+        window["log"].print(lang["Message"][4])
         client_socket.connect((ip, port))
         client_socket.sendall(f"{motd},{mcid}".encode('utf-8'))
         data = client_socket.recv(1024)
