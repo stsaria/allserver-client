@@ -1,5 +1,7 @@
 import configparser, traceback, pickle, socket, check, time, etc, os
 
+# ose -> [--\~]
+
 def is_socket_closed(sock):
     try:
         sock.fileno()
