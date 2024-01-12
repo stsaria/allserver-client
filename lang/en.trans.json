@@ -1,0 +1,49 @@
+{
+    "Info": {
+        "AuthorName": "stsaria",
+        "Explanation": "English language files"
+    },
+    "Help": [
+        "Help\n",
+        "--build : Build (requires PyInstaller)"
+    ],
+    "Text": [
+        "Listserver IP : ",
+        "Minecraft Server IP : ",
+        "Server List",
+        "Log",
+        "Minecraft player name (mcid)\n(to give OP privileges) : ",
+        "Server name (motd) ",
+        "Minecraft Server",
+        "Server Search"
+    ],
+    "Button": [
+        "Search",
+        "Make",
+        "Close",
+        "Help"
+    ],
+    "Word": [
+        "Total number",
+        "Name",
+        "Language(Country)",
+        "Team",
+        "PS",
+        "Minecraft",
+        "List",
+        "Error"
+    ],
+    "Message": [
+        "Success.",
+        "Normal termination",
+        "Abnormal termination.",
+        "Please wait until the server starts up.",
+        "Connected to server"
+    ],
+    "ErrorMessage": [
+        "Failed to retrieve server list.",
+        "Failed to create server.",
+        "Connection refused.\n(You may already be communicating with another client)(Choose another server or wait)",
+        "Server is still standing!\nshut down the server.\nHint: To stop the server, use the /stop command on minecraft or it will automatically stop one hour after the server starts."
+    ]
+}

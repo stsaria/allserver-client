@@ -27,7 +27,6 @@ def gui_start():
         window = sg.Window("AllServer -Client-", main_layout, disable_close=True)
         while True:
             event, values = window.read(timeout=50)
-            # ウィンドウの×ボタンクリックで終了
             if os.path.isfile("3141592653589793238") and is_readonly:
                 window["serverlist"].update(disabled=False)
                 window["log"].update(disabled=False)

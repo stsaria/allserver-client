@@ -5,10 +5,10 @@ os_name = ""
 
 if user_use_platform == "Windows":
     os_name = "win"
-elif user_use_platform == "Linux":
-    os_name = "linux"
+else:
+    os_name = "unix"
 
-make_list = ["lang?dir", "config?dir", "README.md?file", "README.html?file", "detailed-manual"]
+make_list = ["lang?dir", "config?dir", "README.md?file", "detailed-manual"]
 
 def copy_need_file():
     for i in make_list: 
@@ -30,6 +30,6 @@ def install():
     if user_use_platform == "Windows":
         architecture_name = platform.machine().lower()
         shutil.make_archive(f"allserver-win-{architecture_name}-bin", 'zip', root_dir='./bin/win')
-    elif user_use_platform == "Linux":
+    else:
         architecture_name = os.uname().machine
-        shutil.make_archive(f"allserver-linux-{architecture_name}-bin", 'gztar', root_dir='./bin/linux')
+        shutil.make_archive(f"allserver-unix-{architecture_name}-bin", 'gztar', root_dir='./bin/unix')

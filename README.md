@@ -2,7 +2,12 @@
 !Hello!
 The allserver server repository is [here](https://github.com/stsaria/allserver-server)
 
-Deprecated, but if you want to use the CUI version of the client [here](https://github.com/stsaria/allserver-old)
+Deprecated, but if you want to use the CUI version of the client [here](https://github.com/stsaria/allserver-old)(Not compatibility)
+# Requirements
+OS : Linux/Windows/OS X? (desktop environment required)
+- Python3 (if running from source)
+  - PySimpleGUI
+  - Tkinter
 # How To Install
 1. Download release or source code
 2. Install Python library (if python program)

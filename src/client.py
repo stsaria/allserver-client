@@ -32,7 +32,16 @@ def search_servers(host : str, port = 50384, mode = "0", select_lang = ""):
         
         client_socket.sendall("next".encode())
         data = client_socket.recv(1024)
-        servers = pickle.loads(data)
+        # I used to use PICKLE a long time ago when sending server lists.
+        # I'm sending it as a string right now (I really doubt that's a good idea).
+        try:
+            # New Protcol
+            for server in data.decode("utf-8").split("\\"):
+                servers.append(server.split(","))
+            if len(servers) >= 1: servers.pop(-1)
+        except:
+            # Old Protcol
+            servers = pickle.loads(data)
     except:
         return 1, servers
     finally:
@@ -60,10 +69,10 @@ def start_server(ip : str, motd : str, mcid : str, window, port = 50385):
                 window["log"].print("OK")
                 break
             time.sleep(2)
-        if not server_port == "25565":
-            window["log"].print(f"ServerIP : {ip}:{server_port}")
-        else:
+        if server_port == "25565":
             window["log"].print(f"ServerIP : {ip}")
+        else:
+            window["log"].print(f"ServerIP : {ip}:{server_port}")
         window["log"].print(f"ServerVersion : {server_version}\n"+lang["Message"][3])
         data = client_socket.recv(1024)
         if int(data) == 0:

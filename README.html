@@ -366,11 +366,27 @@ code {
     });
   </script>
 <h1 id="allserver-client-gui">AllServer Client (GUI)</h1>
-<p>The allserver server repository is <a href="https://github.com/stsaria/allserver-server">here</a></p>
-<p>Deprecated, but if you want to use the CUI version of the client <a href="https://github.com/stsaria/allserver-old">here</a></p>
+<p>!Hello!
+The allserver server repository is <a href="https://github.com/stsaria/allserver-server">here</a></p>
+<p>Deprecated, but if you want to use the CUI version of the client <a href="https://github.com/stsaria/allserver-old">here</a>(Not compatibility)</p>
+<h1 id="requirements">Requirements</h1>
+<p>OS : Linux/Windows/OS X? (desktop environment required)</p>
+<ul>
+<li>Python3 (if running from source)
+<ul>
+<li>PySimpleGUI</li>
+<li>Tkinter</li>
+</ul>
+</li>
+</ul>
 <h1 id="how-to-install">How To Install</h1>
 <ol>
 <li>Download release or source code</li>
+<li>Install Python library (if python program)</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-comment"># pip3 install -r requirements.txt</span>
+</div></code></pre>
+<ol start="3">
 <li>Run &quot;src/allserver.py&quot; (Python source) &quot;allserver.exe or allserver&quot; (binary file) in the &quot;AllServer&quot; folder</li>
 </ol>
 <pre class="hljs"><code><div><span class="hljs-comment"># python3 src/allserver.py</span>
@@ -379,6 +395,7 @@ code {
 <p>or click on the binary file in the window to launch it</p>
 <h1 id="argument">Argument</h1>
 <ul>
+<li><code>--help</code> Help. e.g:<code>./allserver --help</code></li>
 <li><code>--build</code> Build Python files. e.g:<code>./allserver --build</code></li>
 </ul>
 
