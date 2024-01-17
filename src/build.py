@@ -19,5 +19,6 @@ def install():
     if os.path.isdir("bin"): shutil.rmtree("bin")
     pyinstall()
     copy_need_file()
-    shutil.make_archive(f"allserver-{os_name}-bin", 'zip', root_dir=f"./bin/{os_name}")
-    shutil.make_archive(f"allserver-{os_name}-bin", 'gztar', root_dir=f"./bin/{os_name}")
+    cpu_architecture = platform.machine().lower()
+    shutil.make_archive(f"allserver-{os_name}-{cpu_architecture}-bin", 'zip', root_dir=f"./bin/{os_name}")
+    shutil.make_archive(f"allserver-{os_name}-{cpu_architecture}-bin", 'gztar', root_dir=f"./bin/{os_name}")
