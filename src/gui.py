@@ -59,7 +59,7 @@ def gui_start():
                 ini = configparser.ConfigParser()
                 ini.read('config/basic.ini', 'UTF-8')
                 lang_name = ini["lang"]["lang"]
-                webbrowser.open(f"./detailed-manual/manual-{lang_name}.html")
+                webbrowser.open(os.path.abspath(f"./detailed-manual/manual-{lang_name}.html"))
     except KeyboardInterrupt:
         return
     except:

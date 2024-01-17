@@ -44,11 +44,10 @@ def ini():
 def lang():
     ini = configparser.ConfigParser()
     ini.read('config/basic.ini', 'UTF-8')
-    lang_file = ""
     if os.path.isfile(f"lang/{ini['lang']['lang']}.json"):
-        lang_file = f"{ini['lang']['lang']}.json"
+        pass
     elif os.path.isfile(f"lang/{ini['lang']['spare_lang']}.json"):
-        lang_file = f"{ini['lang']['spare_lang']}.json"
+        pass
     else:
         return 1
     return 0
