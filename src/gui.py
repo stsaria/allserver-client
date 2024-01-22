@@ -24,17 +24,12 @@ main_layout = [
 
 def gui_start():
     global word
-    is_readonly = True
     is_minecraft_run = False
     if os.path.isfile("nostop"): os.remove("nostop")
     try:
         window = sg.Window("AllServer -Client-", main_layout, disable_close=True)
         while True:
             event, values = window.read(timeout=50)
-            if os.path.isfile("3141592653589793238") and is_readonly:
-                window["serverlist"].update(disabled=False)
-                window["log"].update(disabled=False)
-                is_readonly = False
             if not os.path.isfile("nostop"):
                 is_minecraft_run = False
             if event == "Quit" and not is_minecraft_run:
