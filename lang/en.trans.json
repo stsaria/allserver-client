@@ -45,5 +45,6 @@
         "Failed to create server.",
         "Connection refused.\n(You may already be communicating with another client)(Choose another server or wait)",
         "Server is still standing!\nshut down the server.\nHint: To stop the server, use the /stop command on minecraft or it will automatically stop one hour after the server starts."
-    ]
+    ],
+    "SgTableRatio": [9,12,7,18,14]
 }

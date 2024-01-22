@@ -2,6 +2,8 @@ import configparser, webbrowser, threading, traceback, client, etc, os
 import PySimpleGUI as sg
 
 lang = etc.load_lang()
+word = lang["Word"]
+servers = []
 
 main_layout = [
     [sg.Text("AllServer GUI Client", font=("", 20))],
@@ -12,18 +14,20 @@ main_layout = [
     [sg.Text(lang["Text"][5]), sg.Input(key="motd")],
     [sg.Text(lang["Text"][1]), sg.Input(key="minecraftserverip"), sg.Button(lang["Button"][1],key="makeserver")],
     [sg.Text(lang["Text"][2], font=("", 14))],
-    [sg.Multiline(key="serverlist", size=(90, 15), disabled=True)],
+    [sg.Table(servers, headings=[word[1],"IP",word[2],word[3],word[4]], key="serverlist",
+        col_widths=lang["SgTableRatio"], auto_size_columns=False, display_row_numbers=True, bind_return_key=True, expand_y=True)],
+    #[sg.Multiline(key="serverlist", size=(90, 15), disabled=True)],
     [sg.Text(lang["Text"][3], font=("", 14))],
-    [sg.Multiline(key="log", size=(90, 5), disabled=True)],
+    [sg.Multiline(key="log", size=(83, 5), disabled=True)],
     [sg.Button(lang["Button"][3], key="Help"), sg.Button(lang["Button"][2], key="Quit")]
 ]
 
 def gui_start():
+    global word
     is_readonly = True
     is_minecraft_run = False
     if os.path.isfile("nostop"): os.remove("nostop")
     try:
-        word = lang["Word"]
         window = sg.Window("AllServer -Client-", main_layout, disable_close=True)
         while True:
             event, values = window.read(timeout=50)
@@ -38,17 +42,13 @@ def gui_start():
             elif event == "Quit" and is_minecraft_run:
                 sg.Popup(lang["ErrorMessage"][3], title="Cant Quit")
             elif event == "searchserver":
-                servers_str = ""
                 result, servers = client.search_servers(values["listserverip"])
                 if result == 0:
                     window["log"].print(lang["Message"][0])
                 else:
                     window["log"].print(word[7]+" : "+lang["ErrorMessage"][0])
                     continue
-                servers_str = servers_str + word[0] + ":" + str(len(servers)) + "\n"
-                for i in servers:
-                    servers_str = servers_str + word[1] + ":" + i[0] + " IP:" + i[1] + " " + word[2] + ":" + i[2] + " " + word[3] + ":" + i[3] + " " + word[4] + ":" + i[4] + "\n"
-                window["serverlist"].update(servers_str)
+                window["serverlist"].update(servers)
             elif event == "makeserver" and not is_minecraft_run:
                 if values["mcid"] == "":
                     continue
