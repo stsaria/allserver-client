@@ -1,6 +1,6 @@
 import subprocess, platform, shutil, os
 
-make_list = ["lang?dir", "config?dir", "README.md?file", "detailed-manual"]
+make_list = ["lang?dir", "config?dir", "README.md?file", "detailed-manual?dir"]
 
 os_name = platform.system().lower()
 
