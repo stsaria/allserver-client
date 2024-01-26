@@ -14,9 +14,9 @@ def search_servers(host : str, port = 50384, mode = "0", select_lang = ""):
     ini.read('config/basic.ini', 'UTF-8')
     servers = []
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    client_socket.settimeout(5)
     try:      
         client_socket.connect((host, port))
-
         send_data = ","
         if mode[0] == "0":
             if select_lang == "":
@@ -25,11 +25,9 @@ def search_servers(host : str, port = 50384, mode = "0", select_lang = ""):
                 send_data = select_lang+"/"+select_lang+send_data
         send_data = "0,"+send_data
         client_socket.sendall(send_data.encode('utf-8'))
-
         data = client_socket.recv(1024)
         if int(data.decode('utf-8')) != 0:
             return 1, servers
-        
         client_socket.sendall("next".encode())
         data = client_socket.recv(1024)
         # I used to use PICKLE a long time ago when sending server lists.
