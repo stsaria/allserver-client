@@ -16,7 +16,6 @@ main_layout = [
     [sg.Text(lang["Text"][2], font=("", 14))],
     [sg.Table(servers, headings=[word[1],"IP",word[2],word[3],word[4]], key="serverlist",
         col_widths=lang["SgTableRatio"], auto_size_columns=False, display_row_numbers=True, bind_return_key=True, expand_y=True)],
-    #[sg.Multiline(key="serverlist", size=(90, 15), disabled=True)],
     [sg.Text(lang["Text"][3], font=("", 14))],
     [sg.Multiline(key="log", size=(83, 5), disabled=True)],
     [sg.Button(lang["Button"][3], key="Help"), sg.Button(lang["Button"][2], key="Quit")]
