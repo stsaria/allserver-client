@@ -10,6 +10,10 @@ def is_socket_closed(sock):
         return True
 
 def search_servers(host : str, port = 50384, mode = "0", select_lang = ""):
+    if len(host.split(":")) > 1:
+        if host.split(":")[1].isdigit():
+            port = int(host.split(":")[1])
+            host = host.split(":")[0]
     ini = configparser.ConfigParser()
     ini.read('config/basic.ini', 'UTF-8')
     servers = []
@@ -47,6 +51,10 @@ def search_servers(host : str, port = 50384, mode = "0", select_lang = ""):
     return 0, servers
 
 def start_server(ip : str, motd : str, mcid : str, window, port = 50385):
+    if len(host.split(":")) > 1:
+        if host.split(":")[1].isdigit():
+            port = int(host.split(":")[1])
+            host = host.split(":")[0]
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     lang = etc.load_lang()
     result = 0
