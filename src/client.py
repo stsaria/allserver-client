@@ -50,7 +50,7 @@ def search_servers(host : str, port = 50384, mode = "0", select_lang = ""):
         client_socket.close()
     return 0, servers
 
-def start_server(ip : str, motd : str, mcid : str, window, port = 50385):
+def start_server(host : str, motd : str, mcid : str, window, port = 50385):
     if len(host.split(":")) > 1:
         if host.split(":")[1].isdigit():
             port = int(host.split(":")[1])
@@ -61,7 +61,7 @@ def start_server(ip : str, motd : str, mcid : str, window, port = 50385):
     try:
         open("nostop", mode="w")
         window["log"].print(lang["Message"][4])
-        client_socket.connect((ip, port))
+        client_socket.connect((host, port))
         client_socket.sendall(f"{motd},{mcid}".encode('utf-8'))
         data = client_socket.recv(1024)
         if not data:
@@ -71,14 +71,14 @@ def start_server(ip : str, motd : str, mcid : str, window, port = 50385):
         window["log"].print("Wait",end="")
         while True:
             window["log"].print(".",end="")
-            if check.network(ip, server_port):
+            if check.network(host, server_port):
                 window["log"].print("OK")
                 break
             time.sleep(2)
         if server_port == "25565":
-            window["log"].print(f"ServerIP : {ip}")
+            window["log"].print(f"Serverhost : {host}")
         else:
-            window["log"].print(f"ServerIP : {ip}:{server_port}")
+            window["log"].print(f"Serverhost : {host}:{server_port}")
         window["log"].print(f"ServerVersion : {server_version}\n"+lang["Message"][3])
         data = client_socket.recv(1024)
         if int(data) == 0:
